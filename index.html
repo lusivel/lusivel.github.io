@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restoran DineQ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="logo">
+            </div>
+            <div class="hero-content">
+                <h1 class="headline">Selamat Datang di Restoran DineQ</h1>
+                <p class="subheadline">Lezat, Terjangkau, dan Selalu Fresh! Temukan kebahagiaan dalam setiap suapan di Restoran DineQ</p>
+                <a href="#order-section" class="cta-button">Order Now</a>
+            </div>
+        </div>
+    </header>
+    <section id="order-section" class="order-section">
+        <div class="container">
+            <h2>Order Now</h2>
+            <form id="order-form" class="order-form">
+                <label for="name">Nama:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="phone">NO Handphone:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="address">Email:</label>
+                <input type="text" id="address" name="address" required>
+
+                <label for="menu">choose your food (Pilih Makananmu):</label>
+                <select id="menu" name="menu" required>
+                    <option value="classic-burger">Classic Burger - $5.99</option>
+                    <option value="cheese-burger">Cheese Burger - $6.99</option>
+                    <option value="bacon-burger">Bacon Burger - $7.99</option>
+                    <option value="veggie-burger">Veggie Burger - $5.99</option>
+                </select>
+
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" required>
+
+                <label for="order-details">Additional Instructions:</label>
+                <textarea id="order-details" name="order-details" rows="4"></textarea>
+
+                <button type="submit" class="submit-button">Place Order</button>
+            </form>
+            <div id="confirmation-message" class="confirmation-message" style="display:none;">
+                Thank you for your order! We will get back to you soon.
+            </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
