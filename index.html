@@ -1,58 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restoran DineQ</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <img src="logo.png" alt="logo">
-            </div>
-            <div class="hero-content">
-                <h1 class="headline">Selamat Datang di Restoran DineQ</h1>
-                <p class="subheadline">Lezat, Terjangkau, dan Selalu Fresh! Temukan kebahagiaan dalam setiap suapan di Restoran DineQ</p>
-                <a href="#order-section" class="cta-button">Order Now</a>
-            </div>
-        </div>
-    </header>
-    <section id="order-section" class="order-section">
-        <div class="container">
-            <h2>Order Now</h2>
-            <form id="order-form" class="order-form">
-                <label for="name">Nama:</label>
-                <input type="text" id="name" name="name" required>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restoran Dine Q</title>
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <!-- My style -->
+    <!-- feather icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navbar Start -->
+    <nav class="navbar">
+      <a href="#" class="navbar-logo">Restoran <span>Dine Q</span>.</a>
 
-                <label for="phone">NO Handphone:</label>
-                <input type="tel" id="phone" name="phone" required>
+      <div class="navbar-nav">
+        <a href="#home">Home</a>
+        <a href="#about">Tentang Kami</a>
+        <a href="#menu">Menu</a>
+        <a href="#contact">Kontak</a>
+      </div>
 
-                <label for="address">Email:</label>
-                <input type="text" id="address" name="address" required>
-
-                <label for="menu">choose your food (Pilih Makananmu):</label>
-                <select id="menu" name="menu" required>
-                    <option value="classic-burger">Classic Burger - $5.99</option>
-                    <option value="cheese-burger">Cheese Burger - $6.99</option>
-                    <option value="bacon-burger">Bacon Burger - $7.99</option>
-                    <option value="veggie-burger">Veggie Burger - $5.99</option>
-                </select>
-
-                <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="quantity" min="1" required>
-
-                <label for="order-details">Additional Instructions:</label>
-                <textarea id="order-details" name="order-details" rows="4"></textarea>
-
-                <button type="submit" class="submit-button">Place Order</button>
-            </form>
-            <div id="confirmation-message" class="confirmation-message" style="display:none;">
-                Thank you for your order! We will get back to you soon.
-            </div>
-        </div>
+      <div class="navbar-extra">
+        <a href="#" id="search"> <i data-feather="search"></i></a>
+        <a href="#" id="shopping-cart"> <i data-feather="shopping-cart"></i></a>
+        <a href="#" id="hamburger-menu"> <i data-feather="menu"></i></a>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+    <!-- Hero Selection Start -->
+    <section class="hero" id="home">
+      <main class="content">
+        <h1>Keindahan hanya ada disini <span>Dine Q</span></h1>
+        <p>
+          Rasakan keramahan dan kehangatan pelayanan kami di Restoran [Nama
+          Restoran. Kami berkomitmen untuk memberikan pengalaman bersantap yang
+          tak terlupakan bagi setiap tamu, mulai dari langkah pertama Anda masuk
+          hingga gigitan terakhir hidangan Anda.
+        </p>
+        <a href="#" class="cta">Pesan Sekarang</a>
+      </main>
     </section>
+
+    <!-- Hero Selection End -->
+
+    <!-- About Section Start-->
+    <section id="about" class="about">
+      <h2><span>Tentang </span>Kami</h2>
+      <div class="row">
+        <div class="about-img">
+          <img src="tentang_kami.jpg" alt="Tentang Kami" />
+        </div>
+        <div class="content">
+          <h3>Kenapa memilih Dine Q ?</h3>
+          <p>
+            Nikmati hidangan lezat yang dibuat dengan bahan-bahan segar dan
+            berkualitas tinggi oleh koki berpengalaman kami
+          </p>
+          <p>
+            Rasakan suasana hangat dan ramah di restoran kami yang dirancang
+            untuk memberikan kenyamanan bagi setiap tamu
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section End-->
+
+    <!-- Menu Section Start -->
+    <section class="menu" id="menu">
+      <h2><span>Menu </span>Kami</h2>
+      <p>Hidangan klasik yang selalu digemari dengan sentuhan modern.</p>
+
+      <div class="row">
+        <div class="menu-card">
+          <img src="1.jpg" alt="Makanan" class="menu-card-img" />
+          <h3 class="menu-card-title">Chicken with Golden Sauce</h3>
+          <p class="menu-card-price">IDR 250.000</p>
+        </div>
+        <div class="menu-card">
+          <img src="2.jpg" alt="Makanan" class="menu-card-img" />
+          <h3 class="menu-card-title">Classic Tomahawk</h3>
+          <p class="menu-card-price">IDR 450.000</p>
+        </div>
+        <div class="menu-card">
+          <img src="3.jpg" alt="Makanan" class="menu-card-img" />
+          <h3 class="menu-card-title">Tenderloin steak</h3>
+          <p class="menu-card-price">IDR 400.000</p>
+        </div>
+        <div class="menu-card">
+          <img src="4.jpg" alt="Makanan" class="menu-card-img" />
+          <h3 class="menu-card-title">Golden salmon with vegetables</h3>
+          <p class="menu-card-price">IDR 200.000</p>
+        </div>
+        <div class="menu-card">
+          <img src="5.jpg" alt="Makanan" class="menu-card-img" />
+          <h3 class="menu-card-title">Classic Brown Sugar Pound Cake</h3>
+          <p class="menu-card-price">IDR 100.000</p>
+        </div>
+        <div class="menu-card">
+          <img src="6.jpg" alt="Makanan" class="menu-card-img" />
+          <h3 class="menu-card-title">Steak with Golden Chicken</h3>
+          <p class="menu-card-price">IDR 500.000</p>
+        </div>
+        <div class="menu-card">
+          <img src="7.jpg" alt="Makanan" class="menu-card-img" />
+          <h3 class="menu-card-title">chicken breast pieces</h3>
+          <p class="menu-card-price">IDR 150.000</p>
+        </div>
+        <div class="menu-card">
+          <img src="8.jpg" alt="Makanan" class="menu-card-img" />
+          <h3 class="menu-card-title">T-Bone with the vibrant flavors</h3>
+          <p class="menu-card-price">IDR 350.000</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu Section End -->
+    <!-- Contact Section Start-->
+    <section id="contact" class="contact">
+      <h2><span>Kontak </span>Kami</h2>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. At facere
+        eligendi odit suscipit saepe. Velit.
+      </p>
+
+      <div class="row">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.8710109930707!2d106.72475167589103!3d-6.148020793838989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f7f961c04f65%3A0x91667efd0496a1cd!2sUniversitas%20Bina%20Sarana%20Informatika%20Kampus%20Cengkareng%20(UBSI%20Cengkareng)!5e0!3m2!1sid!2sid!4v1716724034236!5m2!1sid!2sid"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          class="map"
+        ></iframe>
+        <form action="">
+          <div class="input-group">
+            <i data-feather="user"></i>
+            <input type="text" placeholder="nama" />
+          </div>
+
+          <div class="input-group">
+            <i data-feather="mail"></i>
+            <input type="text" placeholder="mail" />
+          </div>
+          <div class="input-group">
+            <i data-feather="phone"></i>
+            <input type="text" placeholder="no hp" />
+          </div>
+          <button type="submit" class="btn">Kirim Pesan</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Contact Section End-->
+
+    <!-- footer start -->
+    <footer>
+      <div class="sosials">
+        <a href="#"><i data-feather="instagram"></i></a>
+        <a href="#"><i data-feather="twitter"></i></a>
+        <a href="#"><i data-feather="facebook"></i></a>
+      </div>
+      <div class="links">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Menu</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="credit">
+        <p>Created By <a href="">Ricky Martin</a> .| &copy; 2024,</p>
+      </div>
+    </footer>
+    <!-- footer end -->
+
+    <!-- Feather Icons -->
+    <script>
+      feather.replace();
+    </script>
+    <!-- My Javascript -->
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
