@@ -16,3 +16,9 @@ document.addEventListener("click", function (e) {
     navbarNav.classList.remove("active");
   }
 });
+
+// Add event listener to "Pesan Sekarang" button
+document.querySelector(".cta").addEventListener("click", function () {
+  // Scroll to the menu section
+  document.querySelector("#menu").scrollIntoView({ behavior: "smooth" });
+});
