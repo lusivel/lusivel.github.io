@@ -1,3 +1,118 @@
+// form validation
+const checkoutButton = document.querySelector(".checkout-button");
+checkoutButton.disabled = true;
+
+const form = document.querySelector("#checkoutForm");
+
+form.addEventListener("input", function () {
+  let isValid = true;
+  for (let i = 0; i < form.elements.length; i++) {
+    const element = form.elements[i];
+    if (
+      (element.tagName === "INPUT" ||
+        element.tagName === "TEXTAREA" ||
+        element.tagName === "SELECT") &&
+      element.type !== "hidden" &&
+      element.value.trim() === ""
+    ) {
+      isValid = false;
+      break;
+    }
+  }
+  if (isValid) {
+    checkoutButton.disabled = false;
+    checkoutButton.classList.remove("disabled");
+  } else {
+    checkoutButton.disabled = true;
+    checkoutButton.classList.add("disabled");
+  }
+});
+
+// Function to handle queue
+const handleQueue = () => {
+  let queueNumber = localStorage.getItem("queueNumber") || 0;
+  queueNumber++;
+  localStorage.setItem("queueNumber", queueNumber);
+  document.getElementById("queue").textContent = queueNumber;
+  document.getElementById("checkoutForm").style.display = "none";
+  document.getElementById("queueNumber").style.display = "block";
+};
+
+// kirim data ketika checkout di klik
+checkoutButton.addEventListener("click", function (e) {
+  e.preventDefault();
+  const formData = new FormData(form);
+  const data = new URLSearchParams(formData);
+  const objData = Object.fromEntries(data);
+
+  // Mengambil data dari Alpine store
+  const cart = Alpine.store("cart");
+  const items = cart.items.map((item) => ({
+    name: item.name,
+    quantity: item.quantity,
+    total: item.price * item.quantity,
+  }));
+  objData.items = JSON.stringify(items);
+  objData.total = cart.total;
+
+  const message = formatMessage(objData);
+  const whatsappUrl = `https://wa.me/6289604464167?text=${encodeURIComponent(
+    message
+  )}`;
+  window.open(whatsappUrl);
+
+  // Handle queue number display
+  handleQueue();
+});
+
+// Function to format the WhatsApp message
+const formatMessage = (obj) => {
+  let items;
+  try {
+    items = JSON.parse(obj.items);
+    if (!Array.isArray(items)) {
+      throw new Error("Items is not an array");
+    }
+  } catch (e) {
+    console.error("Failed to parse items:", e);
+    return "Invalid items data";
+  }
+
+  const formattedItems = items
+    .map((item) => {
+      const itemName = item.name;
+      const itemQuantity = item.quantity;
+      const itemTotal = rupiah(item.total);
+      return `${itemName} (${itemQuantity} x ${itemTotal})`;
+    })
+    .join("\n");
+
+  const customerName = obj.name;
+  const customerEmail = obj.email;
+  const customerPhone = obj.phone;
+
+  const total = rupiah(Number(obj.total));
+
+  return `Data Customer
+Nama: ${customerName}
+Email: ${customerEmail}
+No Hp: ${customerPhone}
+
+Data Pesanan
+${formattedItems}
+
+TOTAL: ${total}
+Terima Kasih.`;
+};
+
+// Function to format number to Rupiah
+const rupiah = (number) => {
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+  }).format(number);
+};
+
 document.addEventListener("alpine:init", () => {
   Alpine.data("menu", () => ({
     items: [
@@ -65,28 +180,4 @@ document.addEventListener("alpine:init", () => {
       console.log(`Total Quantity: ${this.quantity}`);
     },
   });
-});
-
-// form validation
-
-const checkoutButton = document.querySelector(".checkout-button");
-checkoutButton.disabled = true;
-
-const form = document.querySelector("#checkoutForm");
-
-form.addEventListener("keyup", function () {
-  let isValid = true;
-  for (let i = 0; i < form.elements.length; i++) {
-    if (form.elements[i].value === "") {
-      isValid = false;
-      break;
-    }
-  }
-  if (isValid) {
-    checkoutButton.disabled = false;
-    checkoutButton.classList.remove("disabled");
-  } else {
-    checkoutButton.disabled = true;
-    checkoutButton.classList.add("disabled");
-  }
 });

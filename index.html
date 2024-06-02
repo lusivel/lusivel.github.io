@@ -21,7 +21,7 @@
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
     <!-- app -->
-    <script src="app.js"></script>
+    <script src="app.js" async></script>
   </head>
   <body>
     <!-- Navbar Start -->
@@ -92,6 +92,17 @@
 
         <div class="form-container" x-show="$store.cart.items.length">
           <form action="" id="checkoutForm">
+            <input
+              type="hidden"
+              name="items"
+              <input
+              type="hidden"
+              name="items"
+              x-model="$store.cart.items"
+            />
+            />
+            <input type="hidden" name="items" x-model="$store.cart.total" />
+
             <h5>Customer Details</h5>
             <label for="name">
               <span>Name</span>
@@ -114,6 +125,9 @@
               checkout
             </button>
           </form>
+          <div id="queueNumber" style="display: none">
+            <h1>Your Queue Number: <span id="queue"></span></h1>
+          </div>
         </div>
       </div>
 
