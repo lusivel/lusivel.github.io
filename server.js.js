@@ -1,12 +1,7 @@
-// Menggunakan middleware CORS dengan konfigurasi untuk domain tertentu
-const corsOptions = {
-  origin: "https://lusivel.github.io", // Domain yang diizinkan (GitHub Pages Anda)
-  optionsSuccessStatus: 200,
-};
-
+// Mengimpor modul cors
+const cors = require("cors");
 const express = require("express");
 const fs = require("fs");
-const cors = require("cors"); // Mengimpor modul cors
 
 const app = express();
 const port = 3000;
